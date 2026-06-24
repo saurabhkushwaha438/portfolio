@@ -1,0 +1,104 @@
+.terminal {
+  width: 700px;
+  background-color: rgba(30, 30, 30, 0.95);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  color: #e0e0e0;
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 14px;
+}
+
+.titleBar {
+  background-color: rgba(50, 50, 50, 0.8);
+  height: 28px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.close, .minimize, .maximize {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.close { background-color: #ff5f56; }
+.minimize { background-color: #ffbd2e; }
+.maximize { background-color: #27c93f; }
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #999;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
+.content {
+  padding: 20px;
+}
+
+.prompt {
+  margin-bottom: 24px;
+  font-weight: bold;
+}
+
+.user {
+  color: #e0e0e0;
+}
+
+.techTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.techTable th {
+  text-align: left;
+  padding-bottom: 16px;
+  color: #ccc;
+  font-weight: normal;
+  border-bottom: 1px dashed #555;
+}
+
+.techTable td {
+  padding: 8px 0;
+  color: #fff;
+}
+
+.category {
+  color: #27c93f;
+  width: 30%;
+}
+
+.check {
+  margin-right: 8px;
+}
+
+.status {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.success {
+  color: #27c93f;
+}
+
+.renderTime {
+  color: #fff;
+}

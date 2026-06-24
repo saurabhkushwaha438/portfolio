@@ -1,0 +1,58 @@
+.menuBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  background-color: rgba(30, 30, 40, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  padding: 0 16px;
+  font-size: 13px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  user-select: none;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.appleLogo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-right: 4px;
+  color: #fff;
+}
+
+.brand {
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.menuItem,
+.icon,
+.time {
+  cursor: pointer;
+}
+
+.menuItem:hover,
+.icon:hover,
+.brand:hover,
+.appleLogo:hover {
+  opacity: 0.8;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  color: white;
+}
