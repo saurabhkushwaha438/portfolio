@@ -1,11 +1,17 @@
+"use client";
+
 import styles from './TerminalWindow.module.css';
 
-export default function TerminalWindow() {
+interface TerminalWindowProps {
+  onClose?: () => void;
+}
+
+export default function TerminalWindow({ onClose }: TerminalWindowProps) {
   return (
     <div className={styles.terminal}>
       <div className={styles.titleBar}>
         <div className={styles.buttons}>
-          <div className={styles.close}></div>
+          <div className={styles.close} onClick={onClose} style={{ cursor: 'pointer' }}></div>
           <div className={styles.minimize}></div>
           <div className={styles.maximize}></div>
         </div>
@@ -13,9 +19,9 @@ export default function TerminalWindow() {
       </div>
       <div className={styles.content}>
         <div className={styles.prompt}>
-          <span className={styles.user}>@adrian</span> % show tech stack
+          <span className={styles.user}>@Saurabh</span> % show tech stack
         </div>
-        
+
         <table className={styles.techTable}>
           <thead>
             <tr>
@@ -25,20 +31,20 @@ export default function TerminalWindow() {
           </thead>
           <tbody>
             <tr>
-              <td className={styles.category}><span className={styles.check}>✓</span> Frontend</td>
-              <td>React.js, Next.js, TypeScript</td>
+              <td className={styles.category}><span className={styles.check}>✓</span> Language</td>
+              <td>Java, Javascript, Typescript</td>
             </tr>
             <tr>
-              <td className={styles.category}><span className={styles.check}>✓</span> Mobile</td>
-              <td>React Native, Expo</td>
+              <td className={styles.category}><span className={styles.check}>✓</span> Frontend</td>
+              <td>React.js, Next.js</td>
             </tr>
             <tr>
               <td className={styles.category}><span className={styles.check}>✓</span> Styling</td>
-              <td>Tailwind CSS, Sass, CSS</td>
+              <td>Tailwind CSS, Bootstrap, CSS</td>
             </tr>
             <tr>
               <td className={styles.category}><span className={styles.check}>✓</span> Backend</td>
-              <td>Node.js, Express, NestJS, Hono</td>
+              <td>Node.js, Express</td>
             </tr>
             <tr>
               <td className={styles.category}><span className={styles.check}>✓</span> Database</td>
