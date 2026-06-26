@@ -12,6 +12,8 @@ import ContactCard from "@/components/Contactcard";
 import Gallery from '@/components/Gallery';
 import SafariWindow from '@/components/SafariWindow';
 import { Lacquer, Aubrey } from "next/font/google";
+import Portfolio from "@/components/Portfolio";
+import { useRouter } from "next/navigation";
 
 const lacquer = Lacquer({
   subsets: ["latin"],
@@ -24,10 +26,12 @@ const aubrey = Aubrey({
 });
 
 export default function Home() {
+  const router = useRouter();
   const [isTerminalOpen, setIsTerminalOpen] = useState(false);
   const [isGalleryOpen, setIsGalleryOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
   const [isSafariOpen, setIsSafariOpen] = useState(false);
+  const [isPortfolioOpen, setIsPortfolioOpen] = useState(false);
 
   return (
     <main className={styles.main}>
@@ -47,35 +51,16 @@ export default function Home() {
         fill
         className={styles.wallpaper}
         priority
+        onClick={() => setIsPortfolioOpen(true)}
       />
       <MenuBar />
 
       <div className={styles.desktopArea}>
         <div className={styles.iconGrid}>
-          <DesktopIcon label="Nike Ecommerce Website Application" />
-          <DesktopIcon label="AI Resume Analyzer" />
-          <DesktopIcon label="Food Delivery App" />
-          <DesktopIcon label="Resume.pdf" iconPath="/images/pdf.png" />
-          <DesktopIcon
-            label="Terminal"
-            iconPath="/images/terminal.png"
-            onClick={() => setIsTerminalOpen(true)}
-          />
-          <DesktopIcon
-            label="Gallery"
-            iconPath="/images/photos.png"
-            onClick={() => setIsGalleryOpen(true)}
-          />
-          <DesktopIcon
-            label="Contact"
-            iconPath="/images/contact.png"
-            onClick={() => setIsContactOpen(true)}
-          />
-          <DesktopIcon
-            label="Safari"
-            iconPath="/images/safari.png"
-            onClick={() => setIsSafariOpen(true)}
-          />
+          <DesktopIcon label="AnyDrop" onClick={() => { window.open("https://anydrop-chi.vercel.app/", "_blank") }} />
+          <DesktopIcon label="CoinInsight Dashboard" onClick={() => { window.open("https://coininsight.vercel.app/", "_blank") }} />
+          <DesktopIcon label="Food Delivery App" onClick={() => { window.open("https://saurabhkushwaha438.github.io/Frog-Soar-Sky-Safari/", "_blank") }} />
+          <DesktopIcon label="Resume.pdf" iconPath="/images/pdf.png" onClick={() => { window.open("/files/resume.pdf", "_blank") }} />
         </div>
 
         <div className={styles.windowArea} style={{ position: 'relative' }}>
@@ -84,8 +69,8 @@ export default function Home() {
             display: 'flex',
             flexDirection: 'column',
             gap: 0,
-            opacity: (isTerminalOpen || isGalleryOpen || isContactOpen || isSafariOpen) ? 0.25 : 1,
-            transform: (isTerminalOpen || isGalleryOpen || isContactOpen || isSafariOpen) ? 'scale(0.95)' : 'scale(1)',
+            opacity: (isTerminalOpen || isGalleryOpen || isContactOpen || isSafariOpen || isPortfolioOpen) ? 0.25 : 1,
+            transform: (isTerminalOpen || isGalleryOpen || isContactOpen || isSafariOpen || isPortfolioOpen) ? 'scale(0.95)' : 'scale(1)',
             transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)'
           }}>
             <BubbleText className={aubrey.className} style={{ fontSize: '2rem', margin: 0 }}>Hey, I'm Saurabh! welcome to my</BubbleText>
@@ -119,10 +104,18 @@ export default function Home() {
               <SafariWindow onClose={() => setIsSafariOpen(false)} />
             </div>
           )}
+
+          {/* Floating Portfolio Window */}
+          {isPortfolioOpen && (
+            <div className="window-animate" style={{ position: 'absolute', zIndex: 60, width: '100%' }}>
+              <Portfolio onClose={() => setIsPortfolioOpen(false)} />
+            </div>
+          )}
         </div>
       </div>
 
       <Dock
+        onOpenFinder={() => setIsPortfolioOpen(true)}
         onOpenTerminal={() => setIsTerminalOpen(true)}
         onOpenGallery={() => setIsGalleryOpen(true)}
         onOpenContact={() => setIsContactOpen(true)}

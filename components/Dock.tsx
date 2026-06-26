@@ -4,13 +4,14 @@ import styles from './Dock.module.css';
 import Image from 'next/image';
 
 interface DockProps {
+  onOpenFinder?: () => void;
   onOpenTerminal?: () => void;
   onOpenGallery?: () => void;
   onOpenContact?: () => void;
   onOpenSafari?: () => void;
 }
 
-export default function Dock({ onOpenTerminal, onOpenGallery, onOpenContact, onOpenSafari }: DockProps) {
+export default function Dock({ onOpenFinder, onOpenTerminal, onOpenGallery, onOpenContact, onOpenSafari }: DockProps) {
   const icons = [
     { name: 'Finder', icon: '/images/finder.png' },
     { name: 'Safari', icon: '/images/safari.png' },
@@ -29,6 +30,7 @@ export default function Dock({ onOpenTerminal, onOpenGallery, onOpenContact, onO
             className={styles.dockItem}
             title={item.name}
             onClick={() => {
+              if (item.name === 'Finder' && onOpenFinder) onOpenFinder();
               if (item.name === 'Terminal' && onOpenTerminal) onOpenTerminal();
               if (item.name === 'Photos' && onOpenGallery) onOpenGallery();
               if (item.name === 'Contacts' && onOpenContact) onOpenContact();
