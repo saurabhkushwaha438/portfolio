@@ -133,7 +133,7 @@ export default function PhotosApp({ onClose }: GalleryProps) {
             >
                 {/* ── Title bar ── */}
                 <div
-                    className="relative flex items-center justify-between px-4 py-[10px] bg-[#2a2a2c] border-b border-white/[0.07]"
+                    className="window-handle cursor-grab active:cursor-grabbing relative flex items-center justify-between px-4 py-[10px] bg-[#2a2a2c] border-b border-white/[0.07]"
                     onMouseEnter={() => setDotsHovered(true)}
                     onMouseLeave={() => setDotsHovered(false)}
                 >

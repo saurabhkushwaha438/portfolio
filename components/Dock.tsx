@@ -16,9 +16,9 @@ interface DockProps {
   isSafariOpen?: boolean;
 }
 
-export default function Dock({ 
+export default function Dock({
   onOpenFinder, onOpenTerminal, onOpenGallery, onOpenContact, onOpenSafari,
-  isFinderOpen, isTerminalOpen, isGalleryOpen, isContactOpen, isSafariOpen 
+  isFinderOpen, isTerminalOpen, isGalleryOpen, isContactOpen, isSafariOpen
 }: DockProps) {
   const icons = [
     { name: 'Finder', icon: '/images/finder.png', isOpen: isFinderOpen },

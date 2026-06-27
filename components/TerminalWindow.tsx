@@ -13,7 +13,7 @@ export default function TerminalWindow({ onClose }: TerminalWindowProps) {
   return (
     <div className={styles.terminal}>
       <div 
-        className={styles.titleBar}
+        className={`window-handle cursor-grab active:cursor-grabbing ${styles.titleBar}`}
         onMouseEnter={() => setDotsHovered(true)}
         onMouseLeave={() => setDotsHovered(false)}
       >

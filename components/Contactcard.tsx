@@ -64,7 +64,7 @@ export default function ContactCard({ onClose }: ContactCardProps) {
             style={{ background: "#1e1e1e", fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" }}>
 
             {/* Title bar */}
-            <div className="flex items-center justify-center relative px-4 py-3 "
+            <div className="window-handle cursor-grab active:cursor-grabbing flex items-center justify-center relative px-4 py-3 "
                 style={{ background: "#2a2a2a", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
                 onMouseEnter={() => setDotsHovered(true)}
                 onMouseLeave={() => setDotsHovered(false)}
@@ -117,6 +117,8 @@ export default function ContactCard({ onClose }: ContactCardProps) {
                         <a
                             key={label}
                             href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             onMouseDown={() => setActiveBtn(label)}
                             onMouseUp={() => setActiveBtn(null)}
                             onMouseLeave={() => setActiveBtn(null)}

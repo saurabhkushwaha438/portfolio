@@ -75,7 +75,7 @@ export default function SafariWindow({ onClose }: SafariWindowProps) {
     >
       {/* --- Toolbar --- */}
       <div 
-        className="flex items-center justify-between px-4 py-2.5 bg-[#2a2a2c] border-b border-white/[0.07] gap-4"
+        className="window-handle cursor-grab active:cursor-grabbing flex items-center justify-between px-4 py-2.5 bg-[#2a2a2c] border-b border-white/[0.07] gap-4"
         onMouseEnter={() => setDotsHovered(true)}
         onMouseLeave={() => setDotsHovered(false)}
       >
@@ -166,7 +166,7 @@ export default function SafariWindow({ onClose }: SafariWindowProps) {
 
               {/* GitHub Link */}
               <div
-                onClick={() => navigateTo('github', 'https://github.com/saurabhkushwaha438')}
+                onClick={() => window.open('https://github.com/saurabhkushwaha438', '_blank')}
                 className="flex flex-col items-center gap-2 cursor-pointer group"
               >
                 <div className="w-14 h-14 rounded-2xl bg-neutral-900 flex items-center justify-center shadow-lg border border-white/10 transition-transform group-hover:scale-105">
@@ -179,7 +179,7 @@ export default function SafariWindow({ onClose }: SafariWindowProps) {
 
               {/* LinkedIn Link */}
               <div
-                onClick={() => navigateTo('linkedin', 'https://linkedin.com/in/saurabhkushwaha')}
+                onClick={() => window.open('https://linkedin.com/in/saurabhkushwaha', '_blank')}
                 className="flex flex-col items-center gap-2 cursor-pointer group"
               >
                 <div className="w-14 h-14 rounded-2xl bg-[#0077b5] flex items-center justify-center shadow-lg transition-transform group-hover:scale-105">
@@ -283,7 +283,7 @@ export default function SafariWindow({ onClose }: SafariWindowProps) {
             <div className="mb-6 max-w-xl">
               <span className="text-[11px] text-white/50 block">github.com › saurabhkushwaha438</span>
               <h3
-                onClick={() => navigateTo('github', 'https://github.com/saurabhkushwaha438')}
+                onClick={() => window.open('https://github.com/saurabhkushwaha438', '_blank')}
                 className="text-sky-400 hover:underline cursor-pointer text-lg font-medium leading-tight mt-0.5"
               >
                 saurabhkushwaha438 (Saurabh Kushwaha) · GitHub
@@ -297,7 +297,7 @@ export default function SafariWindow({ onClose }: SafariWindowProps) {
             <div className="mb-6 max-w-xl">
               <span className="text-[11px] text-white/50 block">linkedin.com › in › saurabhkushwaha</span>
               <h3
-                onClick={() => navigateTo('linkedin', 'https://linkedin.com/in/saurabhkushwaha')}
+                onClick={() => window.open('https://linkedin.com/in/saurabhkushwaha', '_blank')}
                 className="text-sky-400 hover:underline cursor-pointer text-lg font-medium leading-tight mt-0.5"
               >
                 Saurabh Kushwaha - Software Engineer - LinkedIn

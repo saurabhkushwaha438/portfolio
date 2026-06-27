@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import MenuBar from "@/components/MenuBar";
 import Dock from "@/components/Dock";
@@ -14,6 +14,7 @@ import SafariWindow from '@/components/SafariWindow';
 import { Lacquer, Aubrey } from "next/font/google";
 import Portfolio from "@/components/Portfolio";
 import { useRouter } from "next/navigation";
+import Draggable from 'react-draggable';
 
 const lacquer = Lacquer({
   subsets: ["latin"],
@@ -57,10 +58,23 @@ export default function Home() {
 
       <div className={styles.desktopArea}>
         <div className={styles.iconGrid}>
-          <DesktopIcon label="AnyDrop" onClick={() => { window.open("https://anydrop-chi.vercel.app/", "_blank") }} />
-          <DesktopIcon label="CoinInsight Dashboard" onClick={() => { window.open("https://coininsight.vercel.app/", "_blank") }} />
-          <DesktopIcon label="Food Delivery App" onClick={() => { window.open("https://saurabhkushwaha438.github.io/Frog-Soar-Sky-Safari/", "_blank") }} />
-          <DesktopIcon label="Resume.pdf" iconPath="/images/pdf.png" onClick={() => { window.open("/files/resume.pdf", "_blank") }} />
+          <DraggableIcon>
+            <DesktopIcon label="AnyDrop" onClick={() => { window.open("https://anydrop-chi.vercel.app/", "_blank") }} />
+          </DraggableIcon>
+          <DraggableIcon>
+            <DesktopIcon label="CoinInsight Dashboard" onClick={() => { window.open("https://coininsight.vercel.app/", "_blank") }} />
+          </DraggableIcon>
+          <DraggableIcon>
+            <DesktopIcon label="Frog Safari" onClick={() => { window.open("https://saurabhkushwaha438.github.io/Frog-Soar-Sky-Safari/", "_blank") }} />
+          </DraggableIcon>
+          <DraggableIcon>
+            <DesktopIcon label="Premate" onClick={() => { window.open("https://prepmate-theta.vercel.app/", "_blank") }} />
+          </DraggableIcon>
+        </div>
+        <div className={styles.iconGrid}>
+          <DraggableIcon>
+            <DesktopIcon label="Resume.pdf" iconPath="/images/pdf.png" onClick={() => { window.open("/files/resume.pdf", "_blank") }} />
+          </DraggableIcon>
         </div>
 
         <div className={styles.windowArea} style={{ position: 'relative' }}>
@@ -79,37 +93,37 @@ export default function Home() {
 
           {/* Floating Terminal Window */}
           {isTerminalOpen && (
-            <div className="window-animate" style={{ position: 'absolute', zIndex: 50 }}>
+            <DraggableWindow zIndex={50}>
               <TerminalWindow onClose={() => setIsTerminalOpen(false)} />
-            </div>
+            </DraggableWindow>
           )}
 
           {/* Floating Gallery Window */}
           {isGalleryOpen && (
-            <div className="window-animate" style={{ position: 'absolute', zIndex: 40 }}>
+            <DraggableWindow zIndex={40}>
               <Gallery onClose={() => setIsGalleryOpen(false)} />
-            </div>
+            </DraggableWindow>
           )}
 
           {/* Floating Contact Window */}
           {isContactOpen && (
-            <div className="window-animate" style={{ position: 'absolute', zIndex: 45 }}>
+            <DraggableWindow zIndex={45}>
               <ContactCard onClose={() => setIsContactOpen(false)} />
-            </div>
+            </DraggableWindow>
           )}
 
           {/* Floating Safari Window */}
           {isSafariOpen && (
-            <div className="window-animate" style={{ position: 'absolute', zIndex: 35 }}>
+            <DraggableWindow zIndex={35}>
               <SafariWindow onClose={() => setIsSafariOpen(false)} />
-            </div>
+            </DraggableWindow>
           )}
 
           {/* Floating Portfolio Window */}
           {isPortfolioOpen && (
-            <div className="window-animate" style={{ position: 'absolute', zIndex: 60, width: '100%' }}>
+            <DraggableWindow zIndex={60}>
               <Portfolio onClose={() => setIsPortfolioOpen(false)} />
-            </div>
+            </DraggableWindow>
           )}
         </div>
       </div>
@@ -129,3 +143,27 @@ export default function Home() {
     </main>
   );
 }
+
+const DraggableIcon = ({ children }: { children: React.ReactNode }) => {
+  const nodeRef = useRef(null);
+  return (
+    <Draggable nodeRef={nodeRef}>
+      <div ref={nodeRef} style={{ display: 'inline-block' }}>
+        {children}
+      </div>
+    </Draggable>
+  );
+};
+
+const DraggableWindow = ({ children, zIndex, width }: { children: React.ReactNode, zIndex: number, width?: string }) => {
+  const nodeRef = useRef(null);
+  return (
+    <Draggable nodeRef={nodeRef} handle=".window-handle">
+      <div ref={nodeRef} style={{ position: 'absolute', zIndex, width }}>
+        <div className="window-animate">
+          {children}
+        </div>
+      </div>
+    </Draggable>
+  );
+};

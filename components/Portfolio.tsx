@@ -110,6 +110,7 @@ function TitleBar({ onClose }: { onClose?: () => void }) {
     return (
         <div
             className="
+            window-handle cursor-grab active:cursor-grabbing
             h-10
             flex
             items-center
@@ -281,8 +282,8 @@ export default function Portfolio({ onClose }: { onClose?: () => void }) {
     return (
         <div
             className="
-                w-[45%]
-                mx-auto
+                w-[800px]
+                h-[83vh]
                 my-6
                 overflow-hidden
                 rounded-[20px]
