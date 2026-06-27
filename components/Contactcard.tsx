@@ -16,7 +16,7 @@ const socialLinks = [
         href: "https://github.com/saurabhkushwaha438",
     },
     {
-        label: "Platform",
+        label: "Leetcode",
         icon: (
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="w-6 h-6">
                 <rect x="3" y="3" width="18" height="18" rx="3" />
@@ -25,7 +25,7 @@ const socialLinks = [
         ),
         bg: "bg-[#3DBE6E]",
         hoverBg: "hover:bg-[#2EA85E]",
-        href: "#",
+        href: "https://leetcode.com/u/saurabhkushwaha917/",
     },
     {
         label: "Twitter/X",
@@ -57,23 +57,33 @@ interface ContactCardProps {
 
 export default function ContactCard({ onClose }: ContactCardProps) {
     const [activeBtn, setActiveBtn] = useState<string | null>(null);
+    const [dotsHovered, setDotsHovered] = useState(false);
 
     return (
         <div className="h-96 w-125 rounded-xl overflow-hidden shadow-2xl border border-white/10"
-            style={{ background: "#1e1e1e" }}>
+            style={{ background: "#1e1e1e", fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif" }}>
 
             {/* Title bar */}
             <div className="flex items-center justify-center relative px-4 py-3 "
-                style={{ background: "#2a2a2a", borderBottom: "1px solid rgba(255,255,255,0.08)" }}>
+                style={{ background: "#2a2a2a", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+                onMouseEnter={() => setDotsHovered(true)}
+                onMouseLeave={() => setDotsHovered(false)}
+            >
                 {/* Traffic lights */}
-                <div className="absolute left-4 flex items-center gap-2">
-                    <span
-                        className="w-3 h-3 rounded-full bg-[#FF5F57] block cursor-pointer transition-all hover:brightness-110 active:brightness-75"
+                <div className="absolute left-4 flex items-center gap-[7px]">
+                    <button
                         onClick={onClose}
+                        className="w-3 h-3 rounded-full bg-[#FF5F57] flex items-center justify-center transition-all hover:brightness-110 active:brightness-75"
                         title="Close"
-                    />
-                    <span className="w-3 h-3 rounded-full bg-[#FEBC2E] block" />
-                    <span className="w-3 h-3 rounded-full bg-[#28C840] block" />
+                    >
+                        {dotsHovered && (
+                            <svg viewBox="0 0 6 6" fill="none" className="w-[7px] h-[7px]">
+                                <path d="M1 1l4 4M5 1L1 5" stroke="#7a1f1f" strokeWidth="1.2" strokeLinecap="round" />
+                            </svg>
+                        )}
+                    </button>
+                    <button className="w-3 h-3 rounded-full bg-[#FEBC2E]" title="Minimize" />
+                    <button className="w-3 h-3 rounded-full bg-[#28C840]" title="Maximize" />
                 </div>
                 <span className="text-sm font-medium text-white/60 tracking-wide select-none">
                     Contact Me

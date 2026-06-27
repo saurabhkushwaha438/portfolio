@@ -15,6 +15,7 @@ export default function SafariWindow({ onClose }: SafariWindowProps) {
   const [iframeUrl, setIframeUrl] = useState('');
   const [isMinimized, setIsMinimized] = useState(false);
   const [isMaximized, setIsMaximized] = useState(false);
+  const [dotsHovered, setDotsHovered] = useState(false);
 
   const navigateTo = (tab: TabType, newUrl: string, iframe: string = '') => {
     setCurrentTab(tab);
@@ -73,18 +74,22 @@ export default function SafariWindow({ onClose }: SafariWindowProps) {
       }}
     >
       {/* --- Toolbar --- */}
-      <div className="flex items-center justify-between px-4 py-2.5 bg-[#2a2a2c] border-b border-white/[0.07] gap-4">
+      <div 
+        className="flex items-center justify-between px-4 py-2.5 bg-[#2a2a2c] border-b border-white/[0.07] gap-4"
+        onMouseEnter={() => setDotsHovered(true)}
+        onMouseLeave={() => setDotsHovered(false)}
+      >
         {/* Traffic Lights */}
-        <div className="flex items-center gap-2 flex-shrink-0">
-          <button onClick={onClose} className="w-3 h-3 rounded-full bg-[#FF5F57] hover:brightness-110 active:brightness-75 transition-all flex items-center justify-center group" title="Close">
-            <span className="text-[7px] text-[#7a1f1f] font-bold opacity-0 group-hover:opacity-100 transition-opacity">✕</span>
+        <div className="flex items-center gap-[7px] flex-shrink-0">
+          <button onClick={onClose} className="w-3 h-3 rounded-full bg-[#FF5F57] hover:brightness-110 active:brightness-75 transition-all flex items-center justify-center" title="Close">
+            {dotsHovered && (
+                <svg viewBox="0 0 6 6" fill="none" className="w-[7px] h-[7px]">
+                    <path d="M1 1l4 4M5 1L1 5" stroke="#7a1f1f" strokeWidth="1.2" strokeLinecap="round" />
+                </svg>
+            )}
           </button>
-          <button onClick={() => setIsMinimized(true)} className="w-3 h-3 rounded-full bg-[#FEBC2E] hover:brightness-110 active:brightness-75 transition-all flex items-center justify-center group" title="Minimize">
-            <span className="text-[7px] text-[#7a4f00] font-bold opacity-0 group-hover:opacity-100 transition-opacity">−</span>
-          </button>
-          <button onClick={() => setIsMaximized(!isMaximized)} className="w-3 h-3 rounded-full bg-[#28C840] hover:brightness-110 active:brightness-75 transition-all flex items-center justify-center group" title="Maximize">
-            <span className="text-[6px] text-[#0a4f0a] font-bold opacity-0 group-hover:opacity-100 transition-opacity">⤢</span>
-          </button>
+          <button onClick={() => setIsMinimized(true)} className="w-3 h-3 rounded-full bg-[#FEBC2E] hover:brightness-110 active:brightness-75 transition-all" title="Minimize" />
+          <button onClick={() => setIsMaximized(!isMaximized)} className="w-3 h-3 rounded-full bg-[#28C840] hover:brightness-110 active:brightness-75 transition-all" title="Maximize" />
         </div>
 
         {/* Back / Forward Controls */}

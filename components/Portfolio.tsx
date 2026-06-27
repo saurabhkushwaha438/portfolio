@@ -26,63 +26,61 @@ interface Experience {
 const PROJECTS: Project[] = [
     {
         id: 1,
-        icon: "🛡️",
-        name: "VulnScan CLI",
-        description:
-            "Automated vulnerability scanner for Node.js APIs with OWASP Top 10 checks built in. Detects injection, broken auth, and misconfiguration issues directly from the terminal.",
-        techs: ["Node.js", "CLI", "OWASP", "Security"],
-        github: "https://github.com/yourusername/vulnscan",
-        live: "https://legaleyepartner.com",
+        icon: "/images/anydropi.png",
+        name: "AnyDrop",
+        description: "AnyDrop lets you instantly share text, files, or snippets across devices using a temporary PIN. Drop your content once, open it anywhere — no accounts, no logins, no friction.",
+        techs: ["Nextjs", "Tailwind", "Apis", "Cloudinary", "jwt"],
+        github: "https://github.com/saurabhkushwaha438/anydrop",
+        live: "https://anydrop-chi.vercel.app/",
     },
     {
         id: 2,
-        icon: "📄",
-        name: "LegalEye Portal",
-        description:
-            "Client-facing portal built for LegalEye Partners — handles case tracking, document uploads, appointment scheduling, and invoice management end to end.",
-        techs: ["React", "TypeScript", "Prisma", "Freelance"],
-        github: "https://github.com/yourusername/legaleye",
-        live: "https://legaleyepartner.com",
+        icon: "/images/prepmate.png",
+        name: "PrepMate",
+        description: "PrepMate Crack Your Placement Interviews Practice OS, DBMS, CN, and HR questions with an AI mentor designed to simulate the intensity of real-world technical evaluations",
+        techs: ["Nextjs", "TypeScript", "Geminie API"],
+        github: "https://github.com/saurabhkushwaha438/prepmate",
+        live: "https://prepmate-theta.vercel.app/",
     },
     {
         id: 3,
-        icon: "⚙️",
-        name: "DevBoard",
+        icon: "/images/frogsafari.png",
+        name: "FrogsSafari",
         description:
-            "Real-time developer dashboard that aggregates GitHub activity, CI pipeline status, and open issues into one focused view. No more tab-switching.",
-        techs: ["React", "Next.js", "WebSocket", "GitHub API"],
-        github: "https://github.com/yourusername/devboard",
-        live: "https://legaleyepartner.com",
+            "Frog Safari is a 2D side-scroller game where you help a adorable frog hop across treacherous terrain, avoiding obstacles and collecting treats to reach its pond. Built with React and modern web technologies, this game brings charming visuals and smooth gameplay to your browser.",
+        techs: ["javascript", "canavas", "OOPs"],
+        github: "https://github.com/saurabhkushwaha438/Frog-Soar-Sky-Safari",
+        live: "https://saurabhkushwaha438.github.io/Frog-Soar-Sky-Safari/",
     },
     {
         id: 4,
-        icon: "🔒",
-        name: "AuthKit",
+        icon: "/images/dashboardi.png",
+        name: "CoinInsight",
         description:
-            "Drop-in authentication library with JWT, OAuth2, and role-based access control. Works with any Express or Next.js app with a single import.",
-        techs: ["TypeScript", "JWT", "OAuth2", "RBAC"],
-        github: "https://github.com/yourusername/authkit",
-        live: "https://legaleyepartner.com",
+            "CoinInsight is an  Crypto Market Dashboard that provides real-time coin tracking, advanced analytics, and coins comparision",
+        techs: ["Nextjs", "Shadcn ui", "Typescript", "JWT"],
+        github: "https://github.com/saurabhkushwaha438/frontend-dashboard",
+        live: "https://coininsight.vercel.app/",
     },
     {
         id: 5,
-        icon: "📊",
-        name: "MetricsFlow",
+        icon: "🌐",
+        name: "Production Grade CMS Backend",
         description:
-            "Lightweight analytics SDK for Next.js — tracks page views and custom events at the edge with zero cookies and full GDPR compliance out of the box.",
-        techs: ["Next.js", "Edge Runtime", "SQLite", "Privacy"],
-        github: "https://github.com/yourusername/metricsflow",
-        live: "https://legaleyepartner.com",
+            "Production Grade CMS Backend is a content management system backend with role based content management system",
+        techs: ["Express", "JWT", "MongoDB", "Cloudinary", "multer"],
+        github: "https://github.com/saurabhkushwaha438/project_3_backend-content-management-system-",
+        live: "https://github.com/saurabhkushwaha438/project_3_backend-content-management-system-",
     },
     {
         id: 6,
         icon: "🌐",
-        name: "OpenTrace",
+        name: "ChatRoomServer",
         description:
-            "Open source HTTP request tracer for debugging microservice latency. Instruments spans across services and visualises the call graph with Jaeger integration.",
-        techs: ["Go", "gRPC", "Jaeger", "OpenTelemetry"],
-        github: "https://github.com/yourusername/opentrace",
-        live: "https://legaleyepartner.com",
+            "A simple chatroom server built with Java, allowing multiple clients to connect and communicate in real time. This project demonstrates the use of multithreading and socket programming.",
+        techs: ["Java", "multithreading", "socket programming"],
+        github: "https://github.com/saurabhkushwaha438/chatroomserver",
+        live: "https://github.com/saurabhkushwaha438/chatroomserver",
     },
 ];
 
@@ -90,14 +88,14 @@ const EXPERIENCE: Experience[] = [
     {
         company: "OWASP SasanLabs",
         role: "Open Source Contributor",
-        period: "2024 – Present",
+        period: "Present",
         location: "Remote · Open Source",
         badge: "active",
     },
     {
         company: "LegalEye Partners",
         role: "Full Stack Developer",
-        period: "2024 – Present",
+        period: "2024",
         location: "Remote · Contract",
         badge: "freelance",
     },
@@ -107,6 +105,8 @@ const EXPERIENCE: Experience[] = [
 // ─── Sub-components ──────────────────────────────────────────────────────────
 
 function TitleBar({ onClose }: { onClose?: () => void }) {
+    const [dotsHovered, setDotsHovered] = useState(false);
+
     return (
         <div
             className="
@@ -123,17 +123,26 @@ function TitleBar({ onClose }: { onClose?: () => void }) {
             style={{
                 boxShadow: "inset 0 1px 0 rgba(255,255,255,.18), 0 8px 30px rgba(0,0,0,.2)"
             }}
+            onMouseEnter={() => setDotsHovered(true)}
+            onMouseLeave={() => setDotsHovered(false)}
         >
-            <div className="flex gap-[8px]">
-                <div 
-                    className="w-3 h-3 rounded-full bg-[#FF5F56] border border-black/10 cursor-pointer hover:bg-[#ff5f56]/80" 
+            <div className="flex gap-[7px]">
+                <button
                     onClick={onClose}
-                />
-                <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-black/10 cursor-pointer hover:bg-[#ffbd2e]/80" />
-                <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-black/10 cursor-pointer hover:bg-[#27c93f]/80" />
+                    className="w-3 h-3 rounded-full bg-[#FF5F57] flex items-center justify-center transition-all hover:brightness-110 active:brightness-75"
+                    title="Close"
+                >
+                    {dotsHovered && (
+                        <svg viewBox="0 0 6 6" fill="none" className="w-[7px] h-[7px]">
+                            <path d="M1 1l4 4M5 1L1 5" stroke="#7a1f1f" strokeWidth="1.2" strokeLinecap="round" />
+                        </svg>
+                    )}
+                </button>
+                <button className="w-3 h-3 rounded-full bg-[#FEBC2E]" title="Minimize" />
+                <button className="w-3 h-3 rounded-full bg-[#28C840]" title="Maximize" />
             </div>
             <span className="absolute left-1/2 -translate-x-1/2 text-[12px] font-medium text-white/50 pointer-events-none tracking-wide flex items-center gap-1.5">
-                <span className="text-[10px]">📁</span> yourname.dev
+                <span className="text-[10px]">📁</span> saurabh.dev
             </span>
         </div>
     );
@@ -161,8 +170,12 @@ function ProjectList({ projects }: { projects: Project[] }) {
                     {/* Top row */}
                     <div className="flex items-start justify-between mb-3">
                         {/* App icon style */}
-                        <div className="w-[42px] h-[42px] rounded-[10px] bg-white/[0.08] border border-white/10 flex items-center justify-center text-xl shrink-0 shadow-sm">
-                            {project.icon}
+                        <div className="w-[42px] h-[42px] rounded-[10px] bg-white/[0.08] border border-white/10 flex items-center justify-center text-xl shrink-0 shadow-sm overflow-hidden">
+                            {project.icon.startsWith('/') ? (
+                                <img src={project.icon} alt={project.name} className="w-full h-full object-cover" />
+                            ) : (
+                                project.icon
+                            )}
                         </div>
                         <div className="flex gap-1.5">
                             {project.live && (
@@ -281,7 +294,7 @@ export default function Portfolio({ onClose }: { onClose?: () => void }) {
                 bg-white/[0.07]
             "
             style={{
-                fontFamily: '-apple-system,"SF Pro Display",BlinkMacSystemFont,"Segoe UI",sans-serif',
+                fontFamily: "-apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif",
                 background:
                     "linear-gradient(180deg,#0a0a0f 0%,#12101a 100%)",
                 boxShadow:
@@ -317,7 +330,7 @@ export default function Portfolio({ onClose }: { onClose?: () => void }) {
                     </div>
                     <div>
                         <h1 className="text-[22px] text-white/90 leading-tight" style={{ fontWeight: 600, letterSpacing: "-0.02em" }}>
-                            Your Name
+                            Saurabh Kushwaha
                         </h1>
                         <p className="text-[13px] text-white/50 mt-1" style={{ fontWeight: 450 }}>
                             Full Stack Developer · Open Source Contributor
@@ -345,7 +358,7 @@ export default function Portfolio({ onClose }: { onClose?: () => void }) {
                 {/* Bio */}
                 <p className="text-[13px] text-white/60 leading-relaxed mb-6" style={{ fontWeight: 450 }}>
                     Building cool stuff and contributing to open source security tooling.
-                    Member of OWASP SasanLabs — working on web security research and
+                    Member of OWASP SasanLabs — working on frontend and
                     developer tools that solve real problems.
                 </p>
 

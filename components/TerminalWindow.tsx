@@ -1,4 +1,5 @@
 "use client";
+import { useState } from 'react';
 
 import styles from './TerminalWindow.module.css';
 
@@ -7,13 +8,30 @@ interface TerminalWindowProps {
 }
 
 export default function TerminalWindow({ onClose }: TerminalWindowProps) {
+  const [dotsHovered, setDotsHovered] = useState(false);
+
   return (
     <div className={styles.terminal}>
-      <div className={styles.titleBar}>
-        <div className={styles.buttons}>
-          <div className={styles.close} onClick={onClose} style={{ cursor: 'pointer' }}></div>
-          <div className={styles.minimize}></div>
-          <div className={styles.maximize}></div>
+      <div 
+        className={styles.titleBar}
+        onMouseEnter={() => setDotsHovered(true)}
+        onMouseLeave={() => setDotsHovered(false)}
+      >
+        <div className="flex gap-[7px] absolute left-3">
+            <button
+                onClick={onClose}
+                className="w-3 h-3 rounded-full bg-[#FF5F57] flex items-center justify-center transition-all hover:brightness-110 active:brightness-75"
+                title="Close"
+                style={{ border: 'none', cursor: 'pointer' }}
+            >
+                {dotsHovered && (
+                    <svg viewBox="0 0 6 6" fill="none" className="w-[7px] h-[7px]">
+                        <path d="M1 1l4 4M5 1L1 5" stroke="#7a1f1f" strokeWidth="1.2" strokeLinecap="round" />
+                    </svg>
+                )}
+            </button>
+            <button className="w-3 h-3 rounded-full bg-[#FEBC2E]" title="Minimize" style={{ border: 'none' }} />
+            <button className="w-3 h-3 rounded-full bg-[#28C840]" title="Maximize" style={{ border: 'none' }} />
         </div>
         <div className={styles.title}>Tech Stack</div>
       </div>

@@ -115,11 +115,16 @@ export default function Home() {
       </div>
 
       <Dock
-        onOpenFinder={() => setIsPortfolioOpen(true)}
-        onOpenTerminal={() => setIsTerminalOpen(true)}
-        onOpenGallery={() => setIsGalleryOpen(true)}
-        onOpenContact={() => setIsContactOpen(true)}
-        onOpenSafari={() => setIsSafariOpen(true)}
+        onOpenFinder={() => setIsPortfolioOpen((prev) => !prev)}
+        onOpenTerminal={() => setIsTerminalOpen((prev) => !prev)}
+        onOpenGallery={() => setIsGalleryOpen((prev) => !prev)}
+        onOpenContact={() => setIsContactOpen((prev) => !prev)}
+        onOpenSafari={() => setIsSafariOpen((prev) => !prev)}
+        isFinderOpen={isPortfolioOpen}
+        isTerminalOpen={isTerminalOpen}
+        isGalleryOpen={isGalleryOpen}
+        isContactOpen={isContactOpen}
+        isSafariOpen={isSafariOpen}
       />
     </main>
   );
