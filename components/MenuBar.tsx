@@ -1,7 +1,12 @@
 import styles from './MenuBar.module.css';
 import Image from 'next/image';
 
-export default function MenuBar() {
+interface MenuBarProps {
+  onOpenPortfolio?: () => void;
+  onOpenContact?: () => void;
+}
+
+export default function MenuBar({ onOpenPortfolio, onOpenContact }: MenuBarProps) {
   const timeString = new Date().toLocaleTimeString('en-US', {
     weekday: 'short',
     month: 'short',
@@ -17,9 +22,9 @@ export default function MenuBar() {
           <Image src="/images/logo.svg" alt="Apple" width={19} height={19} />
         </span>
         <span className={styles.brand}><h4>Saurabh's Portfolio</h4></span>
-        <span className={styles.menuItem}>Projects</span>
-        <span className={styles.menuItem}>Contact</span>
-        <span className={styles.menuItem}>Resume</span>
+        <span className={styles.menuItem} onClick={onOpenPortfolio}>Projects</span>
+        <span className={styles.menuItem} onClick={onOpenContact}>Contact</span>
+        <span className={styles.menuItem} onClick={() => window.open('/files/resume.pdf', '_blank')}>Resume</span>
       </div>
       <div className={styles.right}>
         <span className={styles.icon}>

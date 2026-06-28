@@ -325,9 +325,7 @@ export default function Portfolio({ onClose }: { onClose?: () => void }) {
                                 "inset 0 1px 0 rgba(255,255,255,.18), 0 8px 30px rgba(0,0,0,.2)"
                         }}
                     >
-                        <div className="w-full h-full rounded-full bg-[#1e1e1e] flex items-center justify-center text-[22px] font-semibold text-white/80 shrink-0">
-                            YN
-                        </div>
+                        <img src="/images/dp.jpeg" alt="Avatar" className="w-full h-full rounded-full object-cover shrink-0" />
                     </div>
                     <div>
                         <h1 className="text-[22px] text-white/90 leading-tight" style={{ fontWeight: 600, letterSpacing: "-0.02em" }}>

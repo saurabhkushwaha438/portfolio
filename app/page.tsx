@@ -54,7 +54,10 @@ export default function Home() {
         priority
         onClick={() => setIsPortfolioOpen(true)}
       />
-      <MenuBar />
+      <MenuBar
+        onOpenPortfolio={() => setIsPortfolioOpen(true)}
+        onOpenContact={() => setIsContactOpen(true)}
+      />
 
       <div className={styles.desktopArea}>
         <div className={styles.iconGrid}>
