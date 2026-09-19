@@ -18,8 +18,11 @@ export default function ChatWindow({ onClose }: { onClose?: () => void }) {
 
     const handleSendMessage = async (msg: string) => {
         if (!msg.trim()) return;
+        console.log(messages);
 
         const newMessages = [...messages, { role: "user", content: msg }];
+
+        console.log(newMessages);
         setMessages(newMessages);
         setInput("");
         setIsLoading(true);

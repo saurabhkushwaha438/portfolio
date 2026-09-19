@@ -82,6 +82,12 @@ export default function Home() {
           <DraggableIcon>
             <DesktopIcon label="Resume.pdf" iconPath="/images/pdf.png" onClick={() => { window.open("/files/resume.pdf", "_blank") }} />
           </DraggableIcon>
+          <DraggableIcon>
+            <DesktopIcon label="Prism" onClick={() => { window.open("https://prism-eight-snowy.vercel.app/", "_blank") }} />
+          </DraggableIcon>
+          <DraggableIcon>
+            <DesktopIcon label="URL Shortner" onClick={() => { window.open("https://urlshortnerfrontend-steel.vercel.app/", "_blank") }} />
+          </DraggableIcon>
         </div>
 
         <div className={styles.windowArea} style={{ position: 'relative' }}>

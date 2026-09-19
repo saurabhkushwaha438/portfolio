@@ -40,6 +40,16 @@ export async function POST(req: Request) {
               ensure unique short links at scale.
               • Containerized the application with Docker and set up GitHub Actions CI/CD to run Jest
               integration tests before deployment on Render.
+          - Prism- A RAG Evaluator
+            Techs:Next.js, TypeScript, RAG, LLMs, Vector Database, OpenAI APIs
+              • Built PRISM, a RAG evaluation suite to benchmark retrieval quality, answer relevance, faithfulness,
+              and end-to-end performance.
+              • Designed structure-aware chunking with metadata extraction to preserve document hierarchy and
+              contextual relationships.
+              • Implemented hybrid retrieval using BM25 and dense vector search, combining results with
+              Reciprocal Rank Fusion (RRF).
+              • Developed reproducible benchmarks to diagnose retrieval failures, context loss, and
+              hallucinations across RAG pipelines 
           - Multi-Resume Parser
             Techs: Nodejs, Groq, LLM, Zod, Typescript
               • Built an AI-powered Resume Parser using Node.js, TypeScript, and Groq LLM to extract
@@ -84,7 +94,7 @@ export async function POST(req: Request) {
          - OWASP SasanLabs (Open Source Contributor) - Working on frontend and developer tools that solve real problems.
 
     #Skills:
-        - React, Next.js, TypeScript, Node.js, Java, MySQL, MongoDB, Redis, DSA, Git, GitHub, Docker.
+        - React, Next.js, TypeScript, Node.js, Java, MySQL, MongoDB, Redis, DSA, Git, GitHub, Docker, RAG, AI Agents.
     
     #Links:
       - github : https://github.com/saurabhkushwaha438
@@ -101,7 +111,7 @@ export async function POST(req: Request) {
 
     const chatCompletion = await client.chat.completions.create({
       messages: messages,
-      model: 'llama-3.3-70b-versatile',
+      model: 'groq/compound',
       stream: true,
     });
 

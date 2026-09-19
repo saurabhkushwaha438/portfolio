@@ -35,6 +35,15 @@ const PROJECTS: Project[] = [
     },
     {
         id: 2,
+        icon: "/images/rageval.png",
+        name: "Prism - RagEvaluator",
+        description: "A RAG evaluation suite to benchmark retrieval quality, answer relevance, faithfulness, and end-to-end performance.",
+        techs: ["Next.js", "TypeScript", "RAG", "LLMs", "Vector Database", "OpenAI APIs"],
+        github: "https://github.com/saurabhkushwaha438/Prism",
+        live: "https://prism-eight-snowy.vercel.app/",
+    },
+    {
+        id: 3,
         icon: "/images/urlshortner.png",
         name: "URL Shortener",
         description: "URL Shortener is a tool that shortens URLs and provides analytics about the clicks on the shortened URLs.",
@@ -43,7 +52,7 @@ const PROJECTS: Project[] = [
         live: "https://urlshortnerfrontend-steel.vercel.app/",
     },
     {
-        id: 3,
+        id: 4,
         icon: "/images/prepmate.png",
         name: "PrepMate",
         description: "PrepMate Crack Your Placement Interviews Practice OS, DBMS, CN, and HR questions with an AI mentor designed to simulate the intensity of real-world technical evaluations",
@@ -52,7 +61,7 @@ const PROJECTS: Project[] = [
         live: "https://prepmate-theta.vercel.app/",
     },
     {
-        id: 4,
+        id: 5,
         icon: "/images/frogsafari.png",
         name: "FrogsSafari",
         description:
@@ -62,7 +71,7 @@ const PROJECTS: Project[] = [
         live: "https://saurabhkushwaha438.github.io/Frog-Soar-Sky-Safari/",
     },
     {
-        id: 5,
+        id: 6,
         icon: "/images/dashboardi.png",
         name: "CoinInsight",
         description:
@@ -72,7 +81,7 @@ const PROJECTS: Project[] = [
         live: "https://coininsight.vercel.app/",
     },
     {
-        id: 6,
+        id: 7,
         icon: "🌐",
         name: "Production Grade CMS Backend",
         description:
@@ -82,7 +91,7 @@ const PROJECTS: Project[] = [
         live: "https://github.com/saurabhkushwaha438/project_3_backend-content-management-system-",
     },
     {
-        id: 7,
+        id: 8,
         icon: "🌐",
         name: "ChatRoomServer",
         description:
@@ -167,68 +176,90 @@ function SectionHead({ children }: { children: React.ReactNode }) {
 function ProjectList({ projects }: { projects: Project[] }) {
     return (
         <div className="flex flex-col gap-3 mb-6">
-            {projects.map((project) => (
-                <div
-                    key={project.id}
-                    className="bg-white/[0.03] border border-white/[0.05] rounded-[12px] p-4 overflow-hidden hover:bg-white/[0.06] transition-colors"
-                    style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,.18), 0 8px 30px rgba(0,0,0,.2)" }}
-                >
-                    {/* Top row */}
-                    <div className="flex items-start justify-between mb-3">
-                        {/* App icon style */}
-                        <div className="w-[42px] h-[42px] rounded-[10px] bg-white/[0.08] border border-white/10 flex items-center justify-center text-xl shrink-0 shadow-sm overflow-hidden">
-                            {project.icon.startsWith('/') ? (
-                                <img src={project.icon} alt={project.name} className="w-full h-full object-cover" />
-                            ) : (
-                                project.icon
-                            )}
-                        </div>
-                        <div className="flex gap-1.5">
-                            {project.live && (
-                                <a
-                                    href={project.live}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="text-[11px] font-medium flex items-center gap-1.5 px-2.5 py-1 rounded-[6px] bg-[#28C840]/10 border border-[#28C840]/20 text-[#28C840] hover:bg-[#28C840]/20 hover:border-[#28C840]/40 hover:shadow-[0_0_12px_rgba(40,200,64,0.4)] transition-all"
-                                >
-                                    <span className="w-1.5 h-1.5 rounded-full bg-[#28C840] shadow-[0_0_6px_#28C840] animate-pulse"></span>
-                                    Live
-                                </a>
-                            )}
-                            {project.github && (
-                                <a
-                                    href={project.github}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="text-[11px] font-medium flex items-center gap-1 px-2.5 py-1 rounded-[6px] bg-white/[0.08] border border-white/[0.05] text-white/70 hover:bg-white/[0.12] hover:text-white transition-all shadow-sm"
-                                >
-                                    <span className="text-[10px] opacity-70">⌘</span> GitHub
-                                </a>
-                            )}
-                        </div>
-                    </div>
+            {projects.map((project) => {
+                const projectUrl = project.live || project.github;
+                return (
+                    <div
+                        key={project.id}
+                        className="relative group bg-white/[0.03] border border-white/[0.05] rounded-[12px] p-4 overflow-hidden hover:bg-white/[0.06] hover:border-white/[0.12] transition-all cursor-pointer"
+                        style={{ boxShadow: "inset 0 1px 0 rgba(255,255,255,.18), 0 8px 30px rgba(0,0,0,.2)" }}
+                    >
+                        {/* Stretched clickable link covering the whole project card */}
+                        {projectUrl && (
+                            <a
+                                href={projectUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="absolute inset-0 z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/20 rounded-[12px]"
+                                aria-label={`Open ${project.name}`}
+                            />
+                        )}
 
-                    {/* Name & desc */}
-                    <h3 className="text-[14px] text-white/90 mb-1" style={{ fontWeight: 600, letterSpacing: "-0.02em" }}>
-                        {project.name}
-                    </h3>
-                    <p className="text-[13px] text-white/50 leading-relaxed mb-3.5" style={{ fontWeight: 450 }}>
-                        {project.description}
-                    </p>
+                        {/* Top row */}
+                        <div className="flex items-start justify-between mb-3">
+                            {/* App icon style */}
+                            <div className="w-[42px] h-[42px] rounded-[10px] bg-white/[0.08] border border-white/10 group-hover:border-white/20 flex items-center justify-center text-xl shrink-0 shadow-sm overflow-hidden transition-colors">
+                                {project.icon.startsWith('/') ? (
+                                    <img src={project.icon} alt={project.name} className="w-full h-full object-cover" />
+                                ) : (
+                                    project.icon
+                                )}
+                            </div>
+                            <div className="flex gap-1.5 relative z-20">
+                                {project.live && (
+                                    <span
+                                        className="text-[11px] font-medium flex items-center gap-1.5 px-2.5 py-1 rounded-[6px] bg-[#28C840]/10 border border-[#28C840]/20 text-[#28C840] group-hover:bg-[#28C840]/20 group-hover:border-[#28C840]/40 group-hover:shadow-[0_0_12px_rgba(40,200,64,0.4)] transition-all pointer-events-none"
+                                    >
+                                        <span className="w-1.5 h-1.5 rounded-full bg-[#28C840] shadow-[0_0_6px_#28C840] animate-pulse"></span>
+                                        Live
+                                    </span>
+                                )}
+                                {project.github && (
+                                    <a
+                                        href={project.github}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        onClick={(e) => e.stopPropagation()}
+                                        className="text-[11px] font-medium flex items-center gap-1 px-2.5 py-1 rounded-[6px] bg-white/[0.08] border border-white/[0.05] text-white/70 hover:bg-white/[0.15] hover:text-white transition-all shadow-sm"
+                                    >
+                                        <span className="text-[10px] opacity-70">⌘</span> GitHub
+                                    </a>
+                                )}
+                            </div>
+                        </div>
 
-                    {/* Tech pills - macOS subtle style */}
-                    <div className="flex flex-wrap gap-1.5">
-                        {project.techs.map((t) => (
-                            <span
-                                key={t}
-                                className="text-[10px] font-medium px-2 py-0.5 rounded-[5px] bg-white/[0.05] border border-white/[0.03] text-white/50"
+                        {/* Name & desc */}
+                        <div className="flex items-center gap-1.5 mb-1">
+                            <h3 className="text-[14px] text-white/90 group-hover:text-white transition-colors" style={{ fontWeight: 600, letterSpacing: "-0.02em" }}>
+                                {project.name}
+                            </h3>
+                            <svg
+                                className="w-3.5 h-3.5 text-white/30 group-hover:text-white/80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
                             >
-                                {t}
-                            </span>
-                        ))}
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                            </svg>
+                        </div>
+                        <p className="text-[13px] text-white/50 leading-relaxed mb-3.5 group-hover:text-white/60 transition-colors" style={{ fontWeight: 450 }}>
+                            {project.description}
+                        </p>
+
+                        {/* Tech pills - macOS subtle style */}
+                        <div className="flex flex-wrap gap-1.5">
+                            {project.techs.map((t) => (
+                                <span
+                                    key={t}
+                                    className="text-[10px] font-medium px-2 py-0.5 rounded-[5px] bg-white/[0.05] border border-white/[0.03] text-white/50 group-hover:border-white/[0.08] transition-colors"
+                                >
+                                    {t}
+                                </span>
+                            ))}
+                        </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </div>
     );
 }
